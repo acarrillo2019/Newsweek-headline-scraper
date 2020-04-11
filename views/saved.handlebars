@@ -1,29 +1,29 @@
-<div class="container">
-    <div class="header-section">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="left_section">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary d-flex h-100">
+  <div class="mx-auto h-100 justify-content-center align-items-center">
+  <a class="navbar-brand" href="/">
+    <img src="img/nLogo250.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+    ewsweek - NewsFeeder
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<div class="date-time ">
                     <span class="date">
                     </span>
                     <span class="time">
                     </span>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="logo">
-                    <a href="/">
-                        <h1>Article Scraper</h1>
-                    </a>
-                </div>
-            </div>
-        </div>
     </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  </div>
+</nav>
 
     <div class="navigation-section">
         <nav class="navbar m-menu navbar-default">
-            <div class="container">
-                <ul class="nav navbar-nav main-nav">
-                    <li class="active"><a class="menu-button" href="/">Home</a></li>
+            <div class="container d-flex">
+                <ul class="nav navbar-nav main-nav list-inline mx-auto justify-content-center">
+                    <li class="active list-inline-item"><a class="menu-button" href="/">Home</a></li>
                     <li>
                         <button class="menu-button clear-saved" data-id="">Clear saved
                             articles</button>
@@ -39,14 +39,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="feature_article_wrapper">
-                    <div class="feature_article_img">
-                        <img class="img-responsive top_static_article_img" src="./img/feature-top-saved.jpg"
-                            alt="feature-top" />
-                    </div>
-                    <div class="feature_article_inner">
+                    <div class="feature_article_karn">
                         <div class="feature_article_title green">
                             <h1 class="">
-                                Look! Here are your saved articles.
+                                SAVED ARTICLES
                             </h1>
                         </div>
                     </div>
@@ -54,8 +50,8 @@
             </div>
             <div class="col-md-12">
                 <div class="category_section mobile">
-                    <div class="article_title header_purple">
-                        <h2>Articles</h2>
+                    <div class="article_title header_purple text-center">
+                        <h1>Articles</h1>
                     </div>
                     {{#each newArticles}}
 
