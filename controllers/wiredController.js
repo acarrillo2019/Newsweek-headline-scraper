@@ -13,18 +13,18 @@ module.exports = (app) => {
 
   // GET Routes
   //--------------------------------------------------------------------------------------------------------------------------
-  // Default route will scrape the Wired Magazine website/Most Popular Articles page
+  // Default route will scrape the Newsweek/newfeed Articles page
   app.get("/", (req, res) =>  {
     // First, grab the body of the html with request
-    axios.get("https://www.newsweek.com/us").then((response) => {
+    axios.get("https://www.newsweek.com/newsfeed").then((response) => {
       // Then, load that into cheerio and save it to $ for a shorthand selector
       const $ = cheerio.load(response.data);
 
       let articles = [];
 
-      // Now, grab every li with class arhive-item-component and build object to render:
+      // Now, grab every article tag and build object to render:
       $("article").each(function(i, element) {
-        // Add the headline, href, summary, image URL & article date for every article, and save them as properties of the result object
+        // Add the headline, href, summary, image URL & category for every article, and save them as properties of the result object
         articles.push({
           headline: $(element)
             .find(".inner")
@@ -32,23 +32,23 @@ module.exports = (app) => {
               .children("a")
               .text()
               .trim(),
-          link: $(element)
+          link: "https://www.newsweek.com/" + $(element)
+            .find(".inner")
+            .find("h3")
             .children("a")
             .attr("href"),
           summary: $(element)
-            .children("div")
-            .children("a")
-            .children("p")
-            .text(),
+            .find(".inner")
+            .find(".summary")
+            .text()
+            .trim(),
           imageURL: $(element)
-            .children("a")
-            .children("div")
-            .children("div")
-            .children("div")
-            .children("div")
-            .children("img")
-            .attr("src"),
-          articleDate: $(element)
+            .find(".image")
+            .find("a")
+            .find("picture")
+            .find("img")
+            .data("src"),
+          category: $(element)
             .children("div")
             .children("div")
             .children("time")
