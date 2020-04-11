@@ -26,3 +26,11 @@ textarea {
   width: 20%;
   z-index: 100;
 }
+
+.bg-primary {
+  background-color: black!important;
+}
+
+body {
+  background-color: red;
+}

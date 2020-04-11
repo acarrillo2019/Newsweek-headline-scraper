@@ -42,17 +42,17 @@ module.exports = (app) => {
             .find(".summary")
             .text()
             .trim(),
+          category: $(element)
+            .children("div")
+            .children("div")
+            .children("time")
+            .text(),
           imageURL: $(element)
             .find(".image")
             .find("a")
             .find("picture")
             .find("img")
-            .data("src"),
-          category: $(element)
-            .children("div")
-            .children("div")
-            .children("time")
-            .text()
+            .data("src")
         });
         console.log(articles);
       });
