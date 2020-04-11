@@ -1,21 +1,32 @@
-WiredScrape
-Purpose:
+![](screenshots/Newsweek_Logo.png)
+
+# Newsfeeder - Newsweek Scraper
+
+## Purpose:
 
 Using Cheerio create an application to scrape a news source. Display the articles and allow the user to add/view comments.
 Description
 
-The WiredScrape application will automatically scrape https://www.wired.com/most-popular/ website. The scraped articles will be displayed in cards. The user can save selected cards by clicking on the "+" icon. By navigating to the 'Saved Articles' page, the user can then view the the save articles.
+## How it works:
+
+Newsfeeder scrapes https://www.newsweek.com/. The scraped articles will be displayed in article sections. The user can save selected articles by clicking on the "Save This Article" link. In the 'Saved Articles' page, the user can then view the the saved articles.
+
+![](screenshots/Newsfeeder_1.png)
 
 On the Saved Articles page:
 
-    The user can view the notes associated with the selected article by clicking on the note icon. Any notes associated with the article will be displayed in a modal. The user may delete a note or add a new note.
-    The user can delete an article by clicking on the trash icon. Deleting an article will delete all associated article notes.
-    If the article already exists in the database, the app will not store another entry into the database and display an alert that the article already exists in the database.
+The user can view the comments associated with each article by clicking on the "Add/View Comments' link. Any comments associated with the article will be displayed in a modal. The user may delete or add a new comment.
 
-When adding/deleting an article or note, the app will display an alert. The alert will display for 2 seconds or can be manually dismissed by the user.
+![](screenshots/Newsfeeder_3.png)
 
-Link to app deployed on Heroku: boiling-fortress-69679
-Tools
+The user can remove a saved article by clicking on the "Remove from Saved" link. Removing an article will simply remove the saved article from the "Saved Articles" page.
+
+![](screenshots/Newsfeeder_4.png)
+
+Link to app deployed on Heroku: [Newsfeeder](https://aqueous-falls-51327.herokuapp.com/)
+
+
+## Tools
 
 NPM Libraries
 
@@ -24,8 +35,10 @@ NPM Libraries
     mongoose
     express-handlebars
     cheerio
-    axios - used instead of request
+    axios
 
 Frameworks
 
     Bootstrap
+    
+![](screenshots/Newsfeeder_2.png)
