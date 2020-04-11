@@ -17,11 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.Promise =global.Promise;
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://user1:password1@ds153667.mlab.com:53667/heroku_615lm3bs", {
-  useMongoClient: true
-});
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://user1:password1@ds153667.mlab.com:53667/heroku_615lm3bs";
+
+mongoose.connect(MONGODB_URI);
 
 require("./routes/routes.js")(app, axios, cheerio, db, mongoose);
 
