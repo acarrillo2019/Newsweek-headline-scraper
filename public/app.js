@@ -19,6 +19,7 @@ $(document).ready(() => {
       data: article
     })
     .then ((res) => {
+      console.log(res);
       // Display alert informing that the article was saved
       if (res === 'status 200') {
         displayAlert("Article Saved!","green");
@@ -28,6 +29,7 @@ $(document).ready(() => {
       }
     })
   })
+
 
   // Event listener to delete article
   $(".delete-article").on("click", function(event) {

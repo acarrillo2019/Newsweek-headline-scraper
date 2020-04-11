@@ -1,8 +1,4 @@
 // Imports
-let express = require("express");
-let router = express.Router();
-let path = require("path");
-
 let axios = require('axios'); // HTTP Request
 let cheerio = require('cheerio'); // Web Scrapper
 let db = require("../models"); // Require all models
@@ -28,10 +24,10 @@ module.exports = (app) => {
         articles.push({
           headline: $(element)
             .find(".inner")
-              .find("h3")
-              .children("a")
-              .text()
-              .trim(),
+            .find("h3")
+            .children("a")
+            .text()
+            .trim(),
           link: "https://www.newsweek.com/" + $(element)
             .find(".inner")
             .find("h3")
@@ -43,10 +39,10 @@ module.exports = (app) => {
             .text()
             .trim(),
           category: $(element)
-            .children("div")
-            .children("div")
-            .children("time")
-            .text(),
+            .find(".inner")
+            .find(".category")
+            .text()
+            .trim(),
           imageURL: $(element)
             .find(".image")
             .find("a")
@@ -77,6 +73,7 @@ module.exports = (app) => {
     });
   });
 
+
   // Route for getting all the notes for a specific article
   app.get("/notes/:id", function(req, res) {
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
@@ -100,7 +97,7 @@ module.exports = (app) => {
     db.Article.find({headline:req.body.headline})
     .then(function(dbArticle) {
       // If article is not already saved, then add it to the db
-      if (dbArticle.length ===0){
+      if (dbArticle.length === 0){
         db.Article.create(req.body)
         .then(function(dbArticle) {
           // View the added result in the console
