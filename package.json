@@ -1,0 +1,27 @@
+{
+  "name": "headline-scraper",
+  "version": "1.0.0",
+  "description": "App that scrapes headlines from ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acarrillo2019/headline-scraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acarrillo2019/headline-scraper/issues"
+  },
+  "homepage": "https://github.com/acarrillo2019/headline-scraper#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.3",
+    "mongoose": "^5.9.7"
+  }
+}
