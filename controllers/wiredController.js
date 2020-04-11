@@ -1,4 +1,8 @@
 // Imports
+let express = require("express");
+let router = express.Router();
+let path = require("path");
+
 let axios = require('axios'); // HTTP Request
 let cheerio = require('cheerio'); // Web Scrapper
 let db = require("../models"); // Require all models
@@ -12,22 +16,23 @@ module.exports = (app) => {
   // Default route will scrape the Wired Magazine website/Most Popular Articles page
   app.get("/", (req, res) =>  {
     // First, grab the body of the html with request
-    axios.get("https://www.wired.com/most-popular/").then((response) => {
+    axios.get("https://www.newsweek.com/us").then((response) => {
       // Then, load that into cheerio and save it to $ for a shorthand selector
       const $ = cheerio.load(response.data);
 
       let articles = [];
 
       // Now, grab every li with class arhive-item-component and build object to render:
-      $("li.archive-item-component").each(function(i, element) {
+      $("article").each(function(i, element) {
         // Add the headline, href, summary, image URL & article date for every article, and save them as properties of the result object
         articles.push({
           headline: $(element)
-            .children("div")
-            .children("a")
-            .children("h2")
-            .text(),
-          link: "https://www.wired.com" + $(element)
+            .find(".inner")
+              .find("h3")
+              .children("a")
+              .text()
+              .trim(),
+          link: $(element)
             .children("a")
             .attr("href"),
           summary: $(element)
@@ -49,11 +54,15 @@ module.exports = (app) => {
             .children("time")
             .text()
         });
+        console.log(articles);
       });
       // Successfully scraped, render the articles
       res.render("index", {articles:articles})
+      console.log(articles);
     });
   });
+
+  
 
   // Route to retrieve saved articles from db
   app.get("/articles", function(req,res){

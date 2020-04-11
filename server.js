@@ -19,9 +19,15 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/wiredDB"
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
 
 mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
+
+
+
 mongoose.connect(MONGODB_URI);
 
 // Setup access to static assets
