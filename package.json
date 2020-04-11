@@ -1,7 +1,7 @@
 {
   "name": "headline-scraper",
   "version": "1.0.0",
-  "description": "App that scrapes headlines from ",
+  "description": "App that scrapes headlines from Newseek",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
