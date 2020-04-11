@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="header-section">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="left_section">
+                    <span class="date">
+                    </span>
+                    <span class="time">
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="logo">
+                    <a href="/">
+                        <h1>Article Scraper</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation-section">
+        <nav class="navbar m-menu navbar-default">
+            <div class="container">
+                <ul class="nav navbar-nav main-nav">
+                    <li class="active"><a class="menu-button" href="/">Home</a></li>
+                    <li>
+                        <button class="menu-button clear-saved" data-id="">Clear saved
+                            articles</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<section id=" category_section" class="category_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="feature_article_wrapper">
+                    <div class="feature_article_img">
+                        <img class="img-responsive top_static_article_img" src="./img/feature-top-saved.jpg"
+                            alt="feature-top" />
+                    </div>
+                    <div class="feature_article_inner">
+                        <div class="feature_article_title green">
+                            <h1 class="">
+                                Look! Here are your saved articles.
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="category_section mobile">
+                    <div class="article_title header_purple">
+                        <h2>Articles</h2>
+                    </div>
+                    {{#each newArticles}}
+
+                    <div class="category_article_wrapper">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="top_article_img">
+                                    <img class="img-responsive" src="{{this.image}}" alt="feature-top" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="category">{{this.category}}</span><span><i class="fas fa-trash"></i><button
+                                        class="menu-button clear-saved" data-id="{{this._id}}">
+                                        Remove from saved</button></span><span><i class="fas fa-comments"></i><button
+                                        class="menu-button notes" data-toggle="collapse"
+                                        data-target="#collapse{{this._id}}" aria-expanded="false">
+                                        Add/View comments</button></span>
+
+                                <div class="category_article_title">
+                                    <h2>
+                                        <a href="{{this.link}}" target="_blank">{{this.title}}</a>
+                                    </h2>
+                                </div>
+                                <hr>
+                                <div class="category_article_content">
+                                    {{this.summary}}
+                                </div>
+                                <div class="collapse" id="collapse{{this._id}}" data-id="{{this._id}}">
+                                    <div class="card card-body">
+                                        Comments for this article:
+                                        <ul class="chat">
+                                            {{#each this.note}}
+                                            <li><i class="far fa-comments"></i>{{this.body}} <button
+                                                    class="remove-note btn-sm btn-outline-warning"
+                                                    data-id="{{this._id}}" type="button">X</button>
+                                                <hr>
+                                            </li>
+
+                                            {{/each}}
+                                        </ul>
+                                        <div class="comments">{{this.body}}</div>
+                                        <div class="input-group">
+                                            <textarea class="form-control text" aria-label="With textarea"></textarea>
+                                        </div>
+                                        <button class="add-note btn-sm btn-outline-secondary" data-id="{{this._id}}"
+                                            type="button">Add comment</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+</section>
+
+<section id="footer_section" class="footer_section">
+    <div class="footer_bottom_Section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="social">
+                        <a class="nav-link" href="/"><h2>Back to the Top</h2></a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>

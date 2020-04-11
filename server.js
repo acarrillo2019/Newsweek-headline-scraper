@@ -1,22 +1,21 @@
-var express = require("express"); // Express Server
-var bodyParser = require("body-parser"); // Post Body Request
-var logger = require("morgan"); // Logger
-let exphbs = require('express-handlebars'); // Templating Engine
-let mongoose = require('mongoose'); // MongoDB ORM
+var express = require("express");
+var logger = require("morgan");
+var mongoose = require("mongoose");
+var exphbs = require("express-handlebars");
 
-// Set Default Port for Express and Heroku
-let PORT = process.env.PORT || 3000; 
+var axios = require("axios");
+var cheerio = require("cheerio");
 
-// Initialize Express
+var db = require("./models");
+
+var PORT = process.env.PORT || 3000;
+
 var app = express();
 
-// Configure middleware
-
-// Setup morgan logger for logging requests
 app.use(logger("dev"));
-
-// Setup body-parser for handling form submissions
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
 
 // Connect to the Mongo DB
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
@@ -24,11 +23,9 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 
 
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
-
-
-
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true
+});
 
 // Setup access to static assets
 app.use(express.static("public"));
@@ -38,7 +35,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Configure routes
-require("./controllers/wiredController.js")(app);
+require("./routes/routes.js")(app, axios, cheerio, db, mongoose);
 
 // Start the server
 app.listen(PORT, function() {

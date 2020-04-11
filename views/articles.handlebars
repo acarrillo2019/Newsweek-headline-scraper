@@ -1,0 +1,113 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-primary d-flex h-100">
+  <div class="mx-auto h-100 justify-content-center align-items-center">
+  <a class="navbar-brand" href="/">
+    <img src="img/nLogo250.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+    ewsweek - NewsFeeder
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+<div class="date-time ">
+                    <span class="date">
+                    </span>
+                    <span class="time">
+                    </span>
+                </div>
+    </div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  </div>
+</nav>
+
+
+    <div class="navigation-section text-center">
+        <nav class="navbar m-menu navbar-default">
+            <div class="container d-flex">
+                <ul class="nav navbar-nav main-nav list-inline mx-auto justify-content-center">
+                    <li class="active list-inline-item"><a class="menu-button" href="/">Home</a></li>
+                    <li><a class="menu-button list-inline-item" href="/saved">Saved articles</a></li>
+                    <li>
+                        <button class="menu-button scrape list-inline-item">Scrape new
+                            articles</button>
+                    </li>
+                    <li>
+                        <button class="menu-button clear list-inline-item">Clear
+                            articles</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<section id="category_section" class="category_section">
+    <div class="container">
+        <div class="row">
+            {{!-- <div class="col-md-12">
+                <div class="feature_article_wrapper">
+                    <div class="feature_article_img">
+                        <img class="img-responsive top_static_article_img" src="./img/feature-top.jpg"
+                            alt="feature-top" />
+                    </div>
+                    <div class="feature_article_inner">
+                        <div class="feature_article_title">
+                            <h1>
+                                Look! Here are fresh new articles for you.
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            <div class="col-md-12">
+                <div class="category_section mobile">
+                    <div class="article_title header_purple text-center">
+                        <h1>Articles</h1>
+                    </div>
+                    {{#each newArticles}}
+                    {{#unless saved}}
+                    <div class="category_article_wrapper">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="top_article_img">
+                                    <img class="img-responsive" src="{{this.image}}" alt="feature-top" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <span class="category">{{this.category}}</span><span><i
+                                        class="fas fa-bookmark"></i><button class="menu-button save"
+                                        data-id="{{this._id}}">Save this
+                                        article</button></span>
+
+                                <div class="category_article_title">
+                                    <h2>
+                                        <a href="{{this.link}}" target="_blank">{{this.title}}</a>
+                                    </h2>
+                                </div>
+                                <hr>
+                                <div class="category_article_content">
+                                    {{this.summary}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/unless}}
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+</section>
+
+<section id="footer_section" class="footer_section">
+    <div class="footer_bottom_Section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="social">
+                        <a class="nav-link" href="/"><h2>Back to the Top</h2></a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
