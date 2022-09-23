@@ -52,7 +52,7 @@ module.exports = (app) => {
         });
         console.log(articles);
       });
-      // Successfully scraped, render the articles
+      // Successfully scraped, render the articless
       res.render("index", {articles:articles})
       console.log(articles);
     });
