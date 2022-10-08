@@ -788,7 +788,7 @@ i {
 
 @media screen and (max-width: 768px) {
   .top_article_img {
-    margin-top: 15px;
+    margin-top: 55px;
   }
   .category_article_date:after {
     position: relative;

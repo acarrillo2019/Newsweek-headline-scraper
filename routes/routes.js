@@ -35,10 +35,11 @@ module.exports = function(app, axios, cheerio, db, mongoose) {
               .trim();
             result.image = $(this)
               .find(".image")
-              .find("a")
+              .find("source")
               .find("picture")
               .find("img")
               .data("src");
+              console.log(result.image);
           } else {
             return;
           }
